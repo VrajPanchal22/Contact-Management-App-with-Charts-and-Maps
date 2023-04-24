@@ -1,25 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ChartsandMaps from "./components/pages/ChartsandMapsPage";
+import Contact from "./components/pages/ContactPage";
+import Layout from "./components/pages/Layout";
+import ContactForm from "./components/pages/ContactForm";
+import React, { useReducer } from "react";
+import ContactPageReducer from "./reducers/ContactPageReducer";
+import ContactPageContext from "./contexts/contactPage";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
+  const [store, dispatch] = useReducer(ContactPageReducer, {
+    contacts: [],
+  });
+  const queryClient = new QueryClient();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <ContactPageContext.Provider value={{ store: store, dispatch: dispatch }}>
+        <div className="App">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route path="/" element={<Contact />}></Route>
+                <Route
+                  path="/charts-and-maps"
+                  element={<ChartsandMaps />}
+                ></Route>
+                <Route path="/contact-form" element={<ContactForm />}></Route>
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </ContactPageContext.Provider>
+    </QueryClientProvider>
   );
 }
 
