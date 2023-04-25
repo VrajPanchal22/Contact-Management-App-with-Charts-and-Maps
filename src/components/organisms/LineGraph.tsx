@@ -106,7 +106,7 @@ export default function LineGraph() {
   return (
     <>
       <Line
-        className="border border-black bg-white  m-auto w-10/12 flex "
+        className="border border-black bg-white  m-auto w-10/12  flex "
         data={chartData}
         options={options}
       />

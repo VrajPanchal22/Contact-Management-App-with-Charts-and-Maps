@@ -84,7 +84,7 @@ export default function ContactForm(props: ContactFormProps) {
 
   return (
     <div
-      className="align-middle border border-sky-500 pt-20 bg-page-bgcolor h-screen"
+      className="align-middle pt-20 bg-page-bgcolor h-screen"
       style={{
         // flex: "0.80",
         flex: "1  ",
@@ -99,7 +99,7 @@ export default function ContactForm(props: ContactFormProps) {
           {state ? "Edit Contact" : "Create Contact Form"}
         </h2>
         <div
-          className="mx-40 py-10 "
+          className="py-10 xl:mx-40 lg:mx-40 md:mx-0 sm:mx-0"
           style={{
             border: "2px solid black",
             textAlign: "center",
