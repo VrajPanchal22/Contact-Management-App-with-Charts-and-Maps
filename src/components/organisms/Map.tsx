@@ -36,13 +36,13 @@ export default function Map() {
   }
   const customIcon = new Icon({
     iconUrl: "https://img.icons8.com/ios-filled/256/google-maps-new.png",
-    iconSize: [20, 20],
+    iconSize: [25, 25],
   });
 
   return (
     <MapContainer
       //   style={{ height: "504px" }}
-      className="border border-black bg-white flex m-auto w-10/12 h-[32rem] "
+      className="z-[50] border border-black bg-white flex m-auto w-10/12 h-[32rem] "
       center={[20.5937, 78.9629]}
       zoom={4}
     >

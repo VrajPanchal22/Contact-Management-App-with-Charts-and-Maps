@@ -84,7 +84,7 @@ export default function ContactForm(props: ContactFormProps) {
 
   return (
     <div
-      className="align-middle border border-sky-500 pt-20 bg-page-bgcolor"
+      className="align-middle border border-sky-500 pt-20 bg-page-bgcolor h-screen"
       style={{
         // flex: "0.80",
         flex: "1  ",
@@ -92,7 +92,10 @@ export default function ContactForm(props: ContactFormProps) {
       }}
     >
       <form onSubmit={handleSubmit} style={{ fontSize: "20px" }}>
-        <h2 style={{ textAlign: "center", margin: "20px" }}>
+        <h2
+          className="font-bold"
+          style={{ textAlign: "center", margin: "20px" }}
+        >
           {state ? "Edit Contact" : "Create Contact Form"}
         </h2>
         <div
@@ -174,8 +177,10 @@ export default function ContactForm(props: ContactFormProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: "10px",
+            marginTop: "20px",
             padding: "10px",
+            border: "2px solid black",
+            fontWeight: "bold",
           }}
         >
           Save Contact

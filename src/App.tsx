@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChartsandMaps from "./components/pages/ChartsandMapsPage";
 import Contact from "./components/pages/ContactPage";
 import Layout from "./components/pages/Layout";
-import ContactForm from "./components/pages/ContactForm";
+import ContactForm from "./components/organisms/ContactForm";
 import React, { useReducer } from "react";
 import ContactPageReducer from "./reducers/ContactPageReducer";
 import ContactPageContext from "./contexts/contactPage";

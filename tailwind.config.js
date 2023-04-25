@@ -6,7 +6,11 @@ module.exports = {
       colors: {
         "header-bgcolor": "#326c9a",
         "page-bgcolor": "#ece9e4",
-        "btn-bgcolor":"#e5e5e5"
+        "btn-bgcolor": "#e5e5e5",
+      },
+      zIndex: {
+        100: "100",
+        50: "50",
       },
     },
   },

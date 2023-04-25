@@ -15,11 +15,12 @@ export default function Main() {
         //   color: "white",
         // }}
         className="text-center p-4 bg-header-bgcolor text-white text-2xl font-bold "
+
       >
         {location.pathname === "/charts-and-maps"
           ? "Charts and Maps"
           : "Contact Page"}
-      </header>
+      </header> 
       <div style={{ display: "flex" }}>
         <Sidebar />
         <Outlet />

@@ -1,6 +1,6 @@
 import React, { useReducer } from "react";
 import { useNavigate } from "react-router";
-import ContactList from "./ContactList";
+import ContactList from "../organisms/ContactList";
 import ContactPageReducer from "../../reducers/ContactPageReducer";
 
 export default function ContactPage() {
