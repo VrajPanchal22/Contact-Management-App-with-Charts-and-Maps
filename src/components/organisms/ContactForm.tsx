@@ -2,26 +2,28 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 import { ADD_CONTACT, EDIT_CONTACT } from "../../actions";
 import { useContext } from "react";
 import ContactPageContext from "../../contexts/contactPage";
-import { useEffect } from "react";
 import { useLocation } from "react-router";
 
-interface ContactFormProps {
-  contact?: {
-    id: string;
-    firstName: string;
-    lastName: string;
-    status: string;
-  };
+interface State {
+  id: string;
+  firstName: string;
+  lastName: string;
+  status: string;
 }
 
-export default function ContactForm(props: ContactFormProps) {
+interface FormData {
+  id: string;
+  firstName: string;
+  lastName: string;
+  status: string;
+}
+
+export default function ContactForm() {
   const location = useLocation();
-  console.log(location);
-  const state = location?.state?.contact;
-  console.log("state", state);
+  const state: State | undefined = location?.state?.contact;
   const { dispatch } = useContext(ContactPageContext);
-  const [status, setStatus] = useState(state ? state.status : "");
-  const [formData, setFormData] = useState(() => {
+  const [status, setStatus] = useState<string>(state ? state.status : "");
+  const [formData, setFormData] = useState<FormData>(() => {
     if (state) {
       return {
         id: state.id,
@@ -56,7 +58,6 @@ export default function ContactForm(props: ContactFormProps) {
     }
   };
 
-  // console.log(formData);
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -83,31 +84,14 @@ export default function ContactForm(props: ContactFormProps) {
   };
 
   return (
-    <div
-      className="align-middle pt-20 bg-page-bgcolor h-screen"
-      style={{
-        // flex: "0.80",
-        flex: "1  ",
-        // backgroundColor: "#ece9e4",
-      }}
-    >
-      <form onSubmit={handleSubmit} style={{ fontSize: "20px" }}>
-        <h2
-          className="font-bold"
-          style={{ textAlign: "center", margin: "20px" }}
-        >
+    <div className="align-middle pt-20 bg-page-bgcolor h-screen  flex-1">
+      <form className="text-xl" onSubmit={handleSubmit}>
+        <h2 className="font-bold text-center m-5">
           {state ? "Edit Contact" : "Create Contact Form"}
         </h2>
-        <div
-          className="py-10 xl:mx-40 lg:mx-40 md:mx-0 sm:mx-0"
-          style={{
-            border: "2px solid black",
-            textAlign: "center",
-            backgroundColor: "white",
-          }}
-        >
-          <div style={{ marginBottom: "10px" }}>
-            <label htmlFor="firstName" style={{ paddingRight: "10px" }}>
+        <div className="py-10 xl:mx-40 lg:mx-40 md:mx-20 sm:mx-10 mx-5 border-2 border-black text-center bg-white">
+          <div className="mb-2.5">
+            <label className="pr-2.5" htmlFor="firstName">
               First Name:
               <input
                 onChange={handleInputChange}
@@ -120,8 +104,8 @@ export default function ContactForm(props: ContactFormProps) {
               />
             </label>
           </div>
-          <div style={{ marginBottom: "10px" }}>
-            <label htmlFor="lastName" style={{ paddingRight: "10px" }}>
+          <div className="mb-2.5">
+            <label className="pr-2.5" htmlFor="lastName">
               Last Name:
               <input
                 onChange={handleInputChange}
@@ -134,15 +118,14 @@ export default function ContactForm(props: ContactFormProps) {
               />
             </label>
           </div>
-          <div style={{ marginBottom: "10px" }}>
+          <div className="mb-2.5">
             <label className="mr-10">
               {" "}
               Status:
-              {/* <span style={{ paddingLeft: "20px" }}>   */}
-              <label className="ml-2" style={{ paddingRight: "10px" }}>
+              <label className="ml-2 pr-2.5">
                 <input
                   onChange={handleInputChange}
-                  style={{ margin: "3px" }}
+                  className="m-1"
                   type="radio"
                   id="Active"
                   name="status"
@@ -155,7 +138,7 @@ export default function ContactForm(props: ContactFormProps) {
               <label>
                 <input
                   onChange={handleInputChange}
-                  style={{ margin: "3px" }}
+                  className="m-1"
                   type="radio"
                   id="Inactive"
                   name="status"
@@ -170,18 +153,8 @@ export default function ContactForm(props: ContactFormProps) {
         </div>
         <button
           type="submit"
-          style={{
-            backgroundColor: "#cccccc",
-            fontSize: "20px",
-            margin: "auto ",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "20px",
-            padding: "10px",
-            border: "2px solid black",
-            fontWeight: "bold",
-          }}
+          className="bg-btn-bgcolor text-black text-xl mx-auto flex items-center justify-center mt-20 p-4 border-2 border-black font-bold
+          "
         >
           Save Contact
         </button>

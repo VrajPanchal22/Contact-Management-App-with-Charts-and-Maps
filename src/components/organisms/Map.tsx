@@ -23,7 +23,6 @@ export default function Map() {
     const { data } = await axios.get(
       "https://disease.sh/v3/covid-19/countries"
     );
-    console.log(data);
     return data;
   });
 
@@ -32,7 +31,7 @@ export default function Map() {
   }
 
   if (error) {
-    return <div>Error: {(error as Error).message}</div>;
+    return <div>Error: {(error as Error)?.message}</div>;
   }
   const customIcon = new Icon({
     iconUrl: "https://img.icons8.com/ios-filled/256/google-maps-new.png",
@@ -41,7 +40,6 @@ export default function Map() {
 
   return (
     <MapContainer
-      //   style={{ height: "504px" }}
       className="z-[50] border border-black bg-white flex m-auto w-10/12 h-[32rem] "
       center={[20.5937, 78.9629]}
       zoom={4}
@@ -51,23 +49,23 @@ export default function Map() {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <MarkerClusterGroup>
-        {data.map((country: Country) => (
+        {data?.map((country: Country) => (
           <Marker
-            key={country.country}
-            position={[country.countryInfo.lat, country.countryInfo.long]}
+            key={country?.country}
+            position={[country?.countryInfo?.lat, country?.countryInfo?.long]}
             icon={customIcon}
           >
             <Popup>
               <div>
                 <img
-                  src={country.countryInfo.flag}
-                  alt={country.country}
-                  style={{ width: "50px", marginBottom: "5px" }}
+                  src={country?.countryInfo?.flag}
+                  alt={country?.country}
+                  className="w-12 mb-1"
                 />
-                <h3>{country.country}</h3>
-                <p>Active: {country.active}</p>
-                <p>Recovered: {country.recovered}</p>
-                <p>Deaths: {country.deaths}</p>
+                <h3>{country?.country}</h3>
+                <p>Active: {country?.active}</p>
+                <p>Recovered: {country?.recovered}</p>
+                <p>Deaths: {country?.deaths}</p>
               </div>
             </Popup>
           </Marker>

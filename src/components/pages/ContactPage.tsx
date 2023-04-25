@@ -1,34 +1,14 @@
-import React, { useReducer } from "react";
 import { useNavigate } from "react-router";
 import ContactList from "../organisms/ContactList";
-import ContactPageReducer from "../../reducers/ContactPageReducer";
 
 export default function ContactPage() {
   const navigate = useNavigate();
   return (
     <>
-      <div
-        className="bg-page-bgcolor h-screen "
-        style={{
-          //  flex: "0.80",
-          flex: "1",
-          backgroundColor: "#ece9e4",
-          overflow: "auto",
-        }}
-      >
+      <div className="bg-page-bgcolor h-screen flex-1 bg-page-bgcolor overflow-auto">
         <button
-          style={{
-            backgroundColor: "#cccccc",
-            fontSize: "20px",
-            margin: "auto ",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: "20px",
-            padding: "10px",
-            border: "2px solid black",
-            fontWeight: "bold",
-          }}
+          className="bg-btn-bgcolor text-black text-xl mx-auto flex items-center justify-center my-10 p-4 border-2 border-black font-bold
+          "
           onClick={() => navigate("/contact-form")}
         >
           Create Contact

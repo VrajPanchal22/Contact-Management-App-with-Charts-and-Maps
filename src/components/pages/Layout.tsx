@@ -8,20 +8,15 @@ export default function Main() {
   return (
     <>
       <header
-        // style={{
-        //   textAlign: "center",
-        //   padding: "20px",
-        //   backgroundColor: "#326c9a",
-        //   color: "white",
-        // }}
+      
         className="text-center p-4 bg-header-bgcolor text-white text-2xl font-bold "
 
       >
-        {location.pathname === "/charts-and-maps"
+        {location?.pathname === "/charts-and-maps"
           ? "Charts and Maps"
           : "Contact Page"}
       </header> 
-      <div style={{ display: "flex" }}>
+      <div className="flex">
         <Sidebar />
         <Outlet />
       </div>

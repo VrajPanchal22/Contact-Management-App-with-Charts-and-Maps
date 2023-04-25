@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 export default function Sidebar() {
   const navigate = useNavigate();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -12,9 +12,10 @@ export default function Sidebar() {
   return (
     <>
       <div className="relative">
+
         {/* Burger icon */}
-        <div className="fixed top-3 left-4 lg:hidden bg-page-bgcolor">
-          <button className="bg-gray-200 p-2 rounded-md" onClick={handleToggle}>
+        <div className="fixed top-3 left-4 lg:hidden bg-slate-300">
+          <button className="p-2 rounded-md" onClick={handleToggle}>
             <svg
               className="h-6 w-6 text-gray-600 "
               fill="none"
@@ -32,6 +33,7 @@ export default function Sidebar() {
         </div>
 
         {/* Sidebar */}
+
         <div
           className={`z-[100] fixed inset-0 lg:relative lg:flex lg:flex-col lg:h-screen w-64 lg:w-auto bg-white border-r  ${
             isOpen ? "block" : "hidden"
@@ -62,6 +64,7 @@ export default function Sidebar() {
           </div>
 
           {/* Close icon */}
+
           <div
             className="lg:hidden absolute top-0 right-0 p-4 cursor-pointer"
             onClick={handleToggle}

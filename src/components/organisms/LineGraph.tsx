@@ -1,5 +1,3 @@
-import React from "react";
-
 import {
   Chart,
   CategoryScale,
@@ -23,7 +21,7 @@ Chart.register(
   Legend
 );
 
-export default function LineGraph() {
+export default function LineGraph(): JSX.Element {
   const fetchData = async () => {
     const response = await fetch(
       "https://disease.sh/v3/covid-19/historical/all?lastdays=all"
@@ -39,7 +37,7 @@ export default function LineGraph() {
   }
 
   if (error) {
-    return <div>Error: {(error as Error).message}</div>;
+    return <div>Error: {(error as Error)?.message}</div>;
   }
 
   const options = {
@@ -56,52 +54,31 @@ export default function LineGraph() {
   };
 
   const chartData = {
-    labels: Object.keys(data.cases),
+    labels: Object.keys(data?.cases),
     datasets: [
       {
         label: "Total Cases",
-        data: Object.values(data.cases),
+        data: Object.values(data?.cases),
         fill: false,
         borderColor: "rgba(75,192,192,1)",
         backgroundColor: "rgba(75,192,192,1)",
-        // tension: 0.1,
       },
       {
         label: "Total Deaths",
-        data: Object.values(data.deaths),
+        data: Object.values(data?.deaths),
         fill: false,
         borderColor: "rgba(192,75,75,1)",
         backgroundColor: "rgba(192,75,75,1)",
-        // tension: 0.1,
       },
       {
         label: "Total Recovered",
-        data: Object.values(data.recovered),
+        data: Object.values(data?.recovered),
         fill: false,
         borderColor: "rgba(75,192,75,1)",
         backgroundColor: "rgba(75,192,75,1)",
-        // tension: 0.1,
       },
     ],
   };
-
-  // const chartOptions: ChartOptions<"line"> = {
-  //   scales: {
-  //     x: {
-  //       type: "time",
-  //       time: {
-  //         displayFormats: {
-  //           day: "MMM D",
-  //         },
-  //       },
-  //     },
-
-  //     y: {
-  //       type: "linear",
-  //       beginAtZero: true,
-  //     },
-  //   },
-  // };
 
   return (
     <>

@@ -3,7 +3,7 @@ import LineGraph from "../organisms/LineGraph";
 import Map from "../organisms/Map";
 import { useState } from "react";
 
-export default function ChartsandMapsPage() {
+export default function ChartsandMapsPage():JSX.Element {
   const [activeComponent, setActiveComponent] = useState<"lineGraph" | "map">(
     "map"
   );
@@ -14,13 +14,8 @@ export default function ChartsandMapsPage() {
 
   return (
     <div
-      className="h-screen"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        flex: "1",
-        backgroundColor: "#ece9e4",
-      }}
+      className="h-screen flex-1 flex-col bg-page-bgcolor"
+     
     >
       <nav className="flex justify-center mb-4">
         <button
@@ -45,13 +40,7 @@ export default function ChartsandMapsPage() {
         </button>
       </nav>
       <div
-        style={{
-          backgroundColor: "#ece9e4",
-          justifyContent: "center",
-          flexDirection: "column",
-          width: "100%",
-        }}
-        className="mx-auto"
+        className="mx-auto justify-center flex flex-col w-full bg-page-bgcolor"
       >
         {activeComponent === "map" && <Map />}
         {activeComponent === "lineGraph" && <LineGraph />}
